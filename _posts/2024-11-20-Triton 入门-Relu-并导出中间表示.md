@@ -52,7 +52,7 @@ def triton_relu(x: torch.Tensor):
 
 if __name__ == "__main__":
     torch.manual_seed(3407)
-    compiled_relu = triton.compile(
+    compiled_relu = triton.compile( # triton.compiler.ASTSource
         kernel_relu, signature="*fp32,*fp32,i32", constants={"BLOCK_SIZE": 256}
     )
     for k, v in compiled_relu.asm.items():
