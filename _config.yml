@@ -186,7 +186,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
             - | # 来自primer/css的页面样式，不要改
               <link
                 rel="stylesheet"
-                href="https://cdn.jsdelivr.net/npm/@primer/css@22.0.0/dist/primer.min.css"
+                href="https://cdn.jsdelivr.net/npm/@primer/css@22.0.2/dist/primer.min.css"
               />
             - | # 代码高亮，可在 <https://www.npmjs.com/package/pygments-rouge-css> 挑选
               <link
@@ -205,6 +205,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
               <style>
                 body, .markdown-body {
                   font-family: "Monaspace Xenon", "极影毁片文宋 Medium", var(--fontStack-monospace, monospace);
+                  font-feature-settings: "calt" 1, "liga" 1;
                 }
               </style>
             - | # 填满页面
@@ -285,7 +286,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                   }
                 </style>
                 <script
-                  src="https://cdn.jsdelivr.net/npm/mermaid@11.8.0/dist/mermaid.min.js"
+                  src="https://cdn.jsdelivr.net/npm/mermaid@11.10.0/dist/mermaid.min.js"
                   async="async"
                   defer="defer"
                   onload='
@@ -364,6 +365,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
             />
             <style>
               .reveal {
+                font-feature-settings: "calt" 1, "liga" 1;
                 --r-code-font: "Monaspace Xenon", "极影毁片文宋 Medium", var(--fontStack-monospace, monospace);
                 --r-main-font: var(--r-code-font);
                 --r-heading-font: var(--r-main-font);
