@@ -42,14 +42,10 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                 href: /archive/
               - title: '标签 / Tags'
                 href: /tags/
-              - title: '捐赠 / Donate'
-                href: /donate/
               - title: '简历 / Resume'
                 href: 
               - title: 'GitHub'
                 href: https://github.com/JW53111
-              - title: 'English / 中文'
-                href: /en/
             footer: | # 页面统计
               <div>
                 <span id="busuanzi_container_site_pv">
