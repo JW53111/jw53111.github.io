@@ -1,1 +1,2 @@
-test Sorry not ready yet
+repo日记
+2025-08-30: 大的框架建立了，但细节还要修改，明天再说
