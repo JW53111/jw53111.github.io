@@ -62,13 +62,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
                 ></script>
               </div>
               <div>
-              {% assign start_year = 2025 %}
-              {% assign current_year = site.time | date: "%Y" %}
-              {% if start_year == current_year %}
-                (C) {{ current_year }} Jiawu
-              {% else %}
-                (C) {{ start_year }}-{{ current_year }} Jiawu
-              {% endif %}
+                (C) {{ 2025 }} Jiawu
               </div>
             jekyll-toc: # <https://github.com/allejo/jekyll-toc>
               enable: true
