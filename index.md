@@ -1,7 +1,7 @@
 ---
 title: 首页 / Index
 layout: default
-menu: false  # 阻止首页进入菜单
+menu: false
 ---
 
 # 欢迎来到我的秘密空间
@@ -14,12 +14,11 @@ This is my personal website. You can get to know me here and I will share some l
 ---
 
 ## 当前时间
-<div id="time-box">⏰ 加载中...</div>
+<div id="time-box" style="font-weight:bold; margin:1em 0;"></div>
 
-{% raw %}
 <script>
 // 确保 DOM 完全加载后执行
-window.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
   const box = document.getElementById("time-box");
   function updateTime() {
     const now = new Date();
@@ -29,7 +28,6 @@ window.addEventListener("DOMContentLoaded", function() {
   setInterval(updateTime, 1000);
 });
 </script>
-{% endraw %}
 
 ---
 
@@ -39,4 +37,3 @@ window.addEventListener("DOMContentLoaded", function() {
 - [标签 / Tags](/tags/)
 - [简历 / Resume](/resume/)
 - [GitHub](https://github.com/JW53111)
-
