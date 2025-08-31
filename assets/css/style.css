@@ -1,27 +1,37 @@
-/* 全局设置 */
-body {
+/* ==========================
+   全局背景 & 字体
+========================== */
+body, #wrap-content, .markdown-body, .container {
+  background: none !important; /* 清除主题自带黑色背景 */
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
-  background: url("/assets/images/bg.jpg") no-repeat center center fixed;
-  background-size: cover;
   color: #f5f5f5;
   line-height: 1.8;
   font-size: 16px;
   text-rendering: optimizeLegibility;
 }
 
-/* 页面内容居中 & 背景遮罩 */
+body {
+  background: url("/assets/images/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* ==========================
+   页面内容容器
+========================== */
 .container {
   max-width: 900px;
   margin: auto;
   padding: 40px;
-  background: none; /* 去掉黑色背景*/
+  background: rgba(0, 0, 0, 0.35); /* 半透明黑色遮罩，增强可读性 */
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.5);
 }
 
-/* 标题美化 */
+/* ==========================
+   标题美化
+========================== */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Georgia", serif;
   font-weight: bold;
@@ -34,14 +44,24 @@ h1, h2, h3, h4, h5, h6 {
   text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
-/* 段落优化 */
+/* ==========================
+   段落 & 列表
+========================== */
 p {
   font-size: 17px;
   line-height: 1.9;
   margin: 15px 0;
+  text-indent: 2em; /* 首行缩进 */
 }
 
-/* 链接样式 */
+ul, ol {
+  margin: 15px 20px;
+  padding-left: 20px;
+}
+
+/* ==========================
+   链接样式
+========================== */
 a {
   color: #00c6ff;
   text-decoration: none;
@@ -52,13 +72,9 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 列表样式 */
-ul, ol {
-  margin: 15px 20px;
-  padding-left: 20px;
-}
-
-/* 代码块样式 */
+/* ==========================
+   代码块样式
+========================== */
 pre, code {
   background: rgba(0,0,0,0.7);
   padding: 6px 10px;
@@ -66,4 +82,19 @@ pre, code {
   font-family: "Fira Code", monospace;
   font-size: 14px;
   color: #ffcc00;
+}
+
+/* ==========================
+   图片最大宽度
+========================== */
+.markdown-body img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* ==========================
+   让内容填满页面高度
+========================== */
+#wrap-content {
+  min-height: 100vh;
 }
