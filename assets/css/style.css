@@ -1,98 +1,111 @@
 /* ==========================
-   全局背景 & 字体
+   全局设置
 ========================== */
 html, body, #wrap-content {
-  height: 100%;
   margin: 0;
   padding: 0;
+  font-family: "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
   background: url("/assets/images/bg.jpg") no-repeat center center fixed !important;
   background-size: cover !important;
-  color: #f5f5f5;
-  font-family: "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
+  color: #ffffff !important;
   line-height: 1.8;
   font-size: 16px;
   text-rendering: optimizeLegibility;
 }
 
-/* 页面内容容器 */
+/* ==========================
+   页面内容容器
+========================== */
 .container {
   max-width: 900px;
   margin: auto;
   padding: 40px;
-  background: rgba(0, 0, 0, 0.35); /* 半透明黑色遮罩 */
+  background: none !important; /* 完全去掉背景遮罩 */
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  box-shadow: none;
 }
 
-/* 标题美化 */
+/* ==========================
+   标题美化
+========================== */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Georgia", serif;
   font-weight: bold;
   text-align: center;
   margin: 20px 0;
-  color: #ffffff;
-  background: linear-gradient(to right, #00c6ff, #0072ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+  color: #ffffff !important;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7); /* 阴影保证可读性 */
 }
 
-/* 段落 & 列表 */
+/* ==========================
+   段落优化
+========================== */
 p {
   font-size: 17px;
   line-height: 1.9;
   margin: 15px 0;
-  text-indent: 2em;
-}
-ul, ol {
-  margin: 15px 20px;
-  padding-left: 20px;
+  color: #ffffff !important;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
 }
 
-/* 链接样式 */
+/* ==========================
+   链接样式
+========================== */
 a {
-  color: #00c6ff;
+  color: #ffcc00 !important;
   text-decoration: none;
   transition: 0.3s;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 a:hover {
-  color: #ffcc00;
+  color: #00ffff !important;
   text-decoration: underline;
 }
 
-/* 代码块 */
+/* ==========================
+   列表样式
+========================== */
+ul, ol {
+  margin: 15px 20px;
+  padding-left: 20px;
+  color: #ffffff !important;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* ==========================
+   代码块样式
+========================== */
 pre, code {
-  background: rgba(0,0,0,0.7);
+  background: rgba(0,0,0,0.6) !important; /* 轻微半透明背景，保证可读性 */
   padding: 6px 10px;
   border-radius: 6px;
   font-family: "Fira Code", monospace;
   font-size: 14px;
-  color: #ffcc00;
-}
-
-/* 图片自适应 */
-.markdown-body img {
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-/* 填满页面 */
-#wrap-content {
-  min-height: 100vh;
+  color: #ffcc00 !important;
+  overflow-x: auto;
+  text-shadow: none;
 }
 
 /* ==========================
-   顶部时间显示
+   图片自适应
 ========================== */
-#top-clock {
-  position: fixed;
-  top: 10px;
-  right: 20px;
-  color: #ffffff;
-  font-size: 16px;
-  background: rgba(0,0,0,0.4);
-  padding: 5px 10px;
-  border-radius: 6px;
-  z-index: 1000;
-  font-family: "Helvetica Neue", Arial, sans-serif;
+.markdown-body img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================
+   首行缩进
+========================== */
+.markdown-body p {
+  text-indent: 2em;
+}
+
+/* ==========================
+   页面高度
+========================== */
+#wrap-content {
+  min-height: 100vh;
+}
+rial, sans-serif;
 }
