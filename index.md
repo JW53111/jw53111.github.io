@@ -15,6 +15,8 @@ This is my personal website. You can get to know me here and I will share some l
 ## 当前时间
 <div id="time-box">⏰ 加载中...</div>
 
+<!-- 使用 raw 包裹，防止 Jekyll 转义 -->
+{% raw %}
 <script>
 // 显示访问者本地时间（自动刷新）
 function updateTime() {
@@ -25,7 +27,7 @@ function updateTime() {
 setInterval(updateTime, 1000);
 updateTime();
 </script>
-
+{% endraw %}
 ---
 
 ## 📑 导航 / Navigation
