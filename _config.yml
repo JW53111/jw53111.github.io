@@ -24,6 +24,7 @@ defaults: # 将所有配置选项使用<https://jekyllrb.com/docs/configuration/
           color-mode: auto # <https://primer.style/css/storybook/?path=/docs/support-theming--docs>
           light-theme: light
           dark-theme: dark
+          style: /assets/css/style.css # 自定义背景，侵犯版权请联系我删除
           menu:
             nav: # 导航部分的内容，你也可以自己增加对应的链接
               - title: '首页 / Index'
