@@ -1,7 +1,7 @@
 ---
 title: 首页 / Index
 layout: default
-menu: false
+menu: false  # 阻止首页进入菜单
 ---
 
 # 欢迎来到我的秘密空间
@@ -14,19 +14,35 @@ This is my personal website. You can get to know me here and I will share some l
 ---
 
 ## 当前时间
-<div id="time-box" style="font-weight:bold; margin:1em 0;"></div>
+<div id="time-box" style="padding: 15px; background: rgba(0,0,0,0.05); border-radius: 8px; text-align: center; font-size: 1.2em;">
+    ⏰ 加载中...
+</div>
 
 <script>
-// 确保 DOM 完全加载后执行
-document.addEventListener("DOMContentLoaded", function() {
-  const box = document.getElementById("time-box");
-  function updateTime() {
-    const now = new Date();
-    box.textContent = "⏰ 当前时间：" + now.toLocaleString();
-  }
-  updateTime();
-  setInterval(updateTime, 1000);
-});
+// 使用更可靠的方式确保DOM加载完成
+(function() {
+    function initTime() {
+        const box = document.getElementById('time-box');
+        if (!box) {
+            setTimeout(initTime, 100);
+            return;
+        }
+        
+        function updateTime() {
+            const now = new Date();
+            box.textContent = "⏰ 当前时间：" + now.toLocaleString();
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTime);
+    } else {
+        initTime();
+    }
+})();
 </script>
 
 ---
