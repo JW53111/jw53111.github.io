@@ -54,6 +54,42 @@ defaults:
               </div>
           prepend:
             - |
+              <!-- 显示访问者本地时间 -->
+              <div id="time-box" style="margin:1em 0; padding:15px; background:rgba(0,0,0,0.05); border-radius:8px; text-align:center; font-size:1.2em; font-weight:bold;"></div>
+              <script>
+              (function() {
+                  function initTime() {
+                      const box = document.getElementById('time-box');
+                      if (!box) {
+                          setTimeout(initTime, 100);
+                          return;
+                      }
+                      
+                      function updateTime() {
+                          const now = new Date();
+                          box.textContent = "⏰ 当前时间：" + now.toLocaleString('zh-CN', { 
+                              year: 'numeric', 
+                              month: '2-digit', 
+                              day: '2-digit',
+                              hour: '2-digit', 
+                              minute: '2-digit', 
+                              second: '2-digit',
+                              hour12: false 
+                          });
+                      }
+                      
+                      updateTime();
+                      setInterval(updateTime, 1000);
+                  }
+                  
+                  if (document.readyState === 'loading') {
+                      document.addEventListener('DOMContentLoaded', initTime);
+                  } else {
+                      initTime();
+                  }
+              })();
+              </script>
+            - |
               <form class="SelectMenu-filter">
                 <input
                   class="SelectMenu-input form-control"
@@ -83,23 +119,82 @@ defaults:
               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-rouge-css@0.1.0/perldoc.min.css" />
               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/monaspace-xenon@5.2.5/index.min.css" />
               <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/jyhpws/dist/%E6%9E%81%E5%BD%B1%E6%AF%81%E7%89%87%E6%96%87%E5%AE%8B/result.css' />
-          post:
-            date:
-              enable: true
-              prepend: post on
-            wordcount:
-              enable: true
-              prepend: about
-              unit: words
-            readtime:
-              enable: true
-              prepend: require
-              unit: min
-              divided_by: 300
-            copyright: |
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="license">CC BY 4.0</a>（除特别声明或转载文章外）
-            related_posts:
-              enable: true
+              <style>
+                body, .markdown-body {
+                  font-family: "Monaspace Xenon", "极影毁片文宋 Medium", var(--fontStack-monospace, monospace);
+                  font-feature-settings: "calt" 1, "liga" 1;
+                }
+                #wrap-content { min-height: 100vh; }
+                .markdown-body p { text-indent: 2em; }
+                .markdown-body img { max-width: calc(100% - 4em); }
+                .markdown-body .highlight pre, .markdown-body pre { padding:0; background:none; }
+                
+                /* 时间显示样式增强 */
+                #time-box {
+                  transition: all 0.3s ease;
+                  border: 1px solid rgba(0,0,0,0.1);
+                }
+                #time-box:hover {
+                  background: rgba(0,0,0,0.1) !important;
+                  transform: scale(1.02);
+                }
+              </style>
+            - |
+              <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+              <style>.katex-display>.katex { white-space: normal; }</style>
+              <script src="https://cdn.jsdelivr.net/combine/npm/katex@0.16.22/dist/katex.min.js,npm/katex@0.16.22/dist/contrib/auto-render.min.js" async onload='renderMathInElement(document.body, { delimiters: [{left: "$$", right: "$$", display: true}, { left: "$", right: "$", display: false }, {left: "\\(", right: "\\)", display: false}, {left: "\\[", right: "\\]", display: true}]})'></script>
+            - |
+              <style>pre code.language-vega-lite { display:none; }</style>
+              <script src="https://cdn.jsdelivr.net/combine/npm/vega@6.1.2,npm/vega-lite@6.2.0,npm/vega-embed@7.0.2" async onload='for(let x of document.getElementsByClassName("language-vega-lite")) if(x.nodeName=="CODE"){let m=document.createElement("div"); x.parentNode.insertAdjacentElement("beforebegin",m); vegaEmbed(m, JSON.parse(x.textContent));}'></script>
+            - |
+              <style>pre code.language-mermaid { display:none; }</style>
+              <script src="https://cdn.jsdelivr.net/npm/mermaid@11.10.0/dist/mermaid.min.js" async defer onload='for(let x of document.getElementsByClassName("language-mermaid")) if(x.nodeName=="CODE"){let m=document.createElement("div"); m.classList.add("mermaid"); m.textContent=x.textContent; x.parentNode.insertAdjacentElement("beforebegin", m);}'></script>
+
+        post:
+          date:
+            enable: true
+            prepend: post on
+          wordcount:
+            enable: true
+            prepend: about
+            unit: words
+          readtime:
+            enable: true
+            prepend: require
+            unit: min
+            divided_by: 300
+          copyright: |
+            <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="license">CC BY 4.0</a>（除特别声明或转载文章外）
+          related_posts:
+            enable: true
+
+# 排除不必要的文件
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - package.json
+  - package-lock.json
+  - node_modules
+
+# 包含必要的文件
+include:
+  - _pages
+  - assets/simple-jekyll-search
+
+# 集合配置
+collections:
+  posts:
+    output: true
+    permalink: /:categories/:year/:month/:day/:title/
+  pages:
+    output: true
+    permalink: /:title/
+
+# 分页配置
+paginate: 5
+paginate_path: "/page:num/"
 
 plugins:
   - jekyll-readme-index
@@ -129,6 +224,7 @@ kramdown:
       line_numbers: true
     span:
       disable: false
+
 
 
 
