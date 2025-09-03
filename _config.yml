@@ -45,7 +45,7 @@ defaults:
                   <span id="busuanzi_value_site_pv"></span> visits
                 </span>
                 <span id="busuanzi_container_site_uv">
-                  <span id="busuanzi_value_site_uv"></span> vistors
+                  <span id="busuanzi_value_site_uv"></span> visitors
                 </span>
                 <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3/bsz.pure.mini.js" async></script>
               </div>
@@ -54,28 +54,19 @@ defaults:
               </div>
           prepend:
             - |
-              <form class="SelectMenu-filter">
-                <input
-                  class="SelectMenu-input form-control"
-                  type="text"
-                  placeholder="Search"
-                  aria-label="Filter"
-                  id="wrap-search-input"
-                />
-                <ol class="px-5" id="wrap-search-result"></ol>
-                <script
-                  src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"
-                  async
-                  onload='
-                    SimpleJekyllSearch({
-                      json: "/assets/simple-jekyll-search/search.json",
-                      searchInput: document.getElementById("wrap-search-input"),
-                      resultsContainer: document.getElementById("wrap-search-result"),
-                      searchResultTemplate: `<li><a href="{url}">{title}</a></li>`,
-                      limit: 9
-                    })'
-                ></script>
-              </form>
+              <!-- 显示访问者本地时间 -->
+              <div id="time-box" style="margin:1em 0; font-weight:bold;">⏰ 加载中...</div>
+              <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                const box = document.getElementById("time-box");
+                function updateTime() {
+                  const now = new Date();
+                  box.textContent = "⏰ 当前时间：" + now.toLocaleString();
+                }
+                updateTime();
+                setInterval(updateTime, 1000);
+              });
+              </script>
           append_to_head:
             - |
               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@primer/css@22.0.2/dist/primer.min.css" />
@@ -83,23 +74,44 @@ defaults:
               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-rouge-css@0.1.0/perldoc.min.css" />
               <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/monaspace-xenon@5.2.5/index.min.css" />
               <link rel='stylesheet' href='https://chinese-fonts-cdn.deno.dev/packages/jyhpws/dist/%E6%9E%81%E5%BD%B1%E6%AF%81%E7%89%87%E6%96%87%E5%AE%8B/result.css' />
-          post:
-            date:
-              enable: true
-              prepend: post on
-            wordcount:
-              enable: true
-              prepend: about
-              unit: words
-            readtime:
-              enable: true
-              prepend: require
-              unit: min
-              divided_by: 300
-            copyright: |
-              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="license">CC BY 4.0</a>（除特别声明或转载文章外）
-            related_posts:
-              enable: true
+              <style>
+                body, .markdown-body {
+                  font-family: "Monaspace Xenon", "极影毁片文宋 Medium", var(--fontStack-monospace, monospace);
+                  font-feature-settings: "calt" 1, "liga" 1;
+                }
+                #wrap-content { min-height: 100vh; }
+                .markdown-body p { text-indent: 2em; }
+                .markdown-body img { max-width: calc(100% - 4em); }
+                .markdown-body .highlight pre, .markdown-body pre { padding:0; background:none; }
+              </style>
+            - |
+              <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" />
+              <style>.katex-display>.katex { white-space: normal; }</style>
+              <script src="https://cdn.jsdelivr.net/combine/npm/katex@0.16.22/dist/katex.min.js,npm/katex@0.16.22/dist/contrib/auto-render.min.js" async onload='renderMathInElement(document.body, { delimiters: [{left: "$$", right: "$$", display: true}, { left: "$", right: "$", display: false }, {left: "\\(", right: "\\)", display: false}, {left: "\\[", right: "\\]", display: true}]})'></script>
+            - |
+              <!-- Vega-Lite 渲染 -->
+              <style>pre code.language-vega-lite { display:none; }</style>
+              <script src="https://unpkg.com/vega@5"></script>
+              <script src="https://unpkg.com/vega-lite@5"></script>
+              <script src="https://unpkg.com/vega-embed@6"></script>
+              <script>
+              document.addEventListener("DOMContentLoaded", () => {
+                for (let x of document.getElementsByClassName("language-vega-lite")) {
+                  if (x.nodeName === "CODE") {
+                    let m = document.createElement("div");
+                    x.parentNode.insertAdjacentElement("beforebegin", m);
+                    try {
+                      vegaEmbed(m, JSON.parse(x.textContent));
+                    } catch (err) {
+                      console.error("Vega 渲染失败", err);
+                    }
+                  }
+                }
+              });
+              </script>
+            - |
+              <style>pre code.language-mermaid { display:none; }</style>
+              <script src="https://cdn.jsdelivr.net/npm/mermaid@11.10.0/dist/mermaid.min.js" async defer onload='for(let x of document.getElementsByClassName("language-mermaid")) if(x.nodeName=="CODE"){let m=document.createElement("div"); m.classList.add("mermaid"); m.textContent=x.textContent; x.parentNode.insertAdjacentElement("beforebegin", m);}'></script>
 
 plugins:
   - jekyll-readme-index
@@ -129,6 +141,7 @@ kramdown:
       line_numbers: true
     span:
       disable: false
+
 
 # 以下为 githubpage上不可修改的参数，见<https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll>
 #lsi: false # 为相关文章生成索引
