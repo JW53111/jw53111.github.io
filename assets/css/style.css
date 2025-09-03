@@ -107,3 +107,15 @@ pre, code {
 #wrap-content {
   min-height: 100vh;
 }
+
+/* ==========================
+   时间显示样式
+========================== */
+#time-box {
+  color: #00ffcc !important;   /* 高亮颜色，和背景有对比 */
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* 阴影保证清晰 */
+  margin: 20px auto;
+  text-align: center;
+}
