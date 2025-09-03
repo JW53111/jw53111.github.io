@@ -13,37 +13,9 @@ This is my personal website. You can get to know me here and I will share some l
 
 ---
 
-## 当前时间
-<div id="time-box" style="padding: 15px; background: rgba(0,0,0,0.05); border-radius: 8px; text-align: center; font-size: 1.2em;">
-    ⏰ 加载中...
-</div>
-
-<script>
-// 使用更可靠的方式确保DOM加载完成
-(function() {
-    function initTime() {
-        const box = document.getElementById('time-box');
-        if (!box) {
-            setTimeout(initTime, 100);
-            return;
-        }
-        
-        function updateTime() {
-            const now = new Date();
-            box.textContent = "⏰ 当前时间：" + now.toLocaleString();
-        }
-        
-        updateTime();
-        setInterval(updateTime, 1000);
-    }
-    
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initTime);
-    } else {
-        initTime();
-    }
-})();
-</script>
+## 当前时间  
+<!-- 时间框和脚本已经在 _config.yml 里配置，这里只要一个容器即可 -->
+<div id="time-box">⏰ 加载中...</div>
 
 ---
 
