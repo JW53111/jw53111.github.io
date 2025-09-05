@@ -1,7 +1,8 @@
 // comments.js
+// comments.js
 document.addEventListener("DOMContentLoaded", function () {
-  // 兼容 WuK 主题常见文章容器
-  const article = document.querySelector(".container, #wrap-content");
+  // 选中文章容器，根据你的主题可能是 .container 或 #wrap-content
+  const article = document.querySelector(".container");
   if (!article) return;
 
   // 创建评论区
@@ -9,31 +10,30 @@ document.addEventListener("DOMContentLoaded", function () {
   commentDiv.id = "comments-section";
   article.appendChild(commentDiv);
 
-  // 评论列表
+  // 创建留言列表
   const list = document.createElement("div");
   list.id = "comment-list";
   commentDiv.appendChild(list);
 
-  // 输入框
+  // 创建输入框和按钮
   const input = document.createElement("textarea");
   input.id = "comment-input";
   input.placeholder = "写下你的留言...（本地缓存）";
-  commentDiv.appendChild(input);
 
-  // 提交按钮
   const btn = document.createElement("button");
   btn.id = "comment-submit";
   btn.textContent = "提交";
+
+  commentDiv.appendChild(input);
   commentDiv.appendChild(btn);
 
-  // 本地缓存 key
+  // 加载本地缓存
   const key = location.pathname + "_comments";
   let comments = JSON.parse(localStorage.getItem(key) || "[]");
 
-  // 渲染函数
   function renderComments() {
     list.innerHTML = "";
-    comments.forEach(c => {
+    comments.forEach((c, i) => {
       const div = document.createElement("div");
       div.className = "comment-item";
       div.textContent = c;
