@@ -1,55 +1,54 @@
 // comments.js
-document.addEventListener("DOMContentLoaded", () => {
-  // 自动在文章内容底部插入评论容器
-  const postContent = document.querySelector(".markdown-body, .post-content, .container"); 
-  if (!postContent) return;
+document.addEventListener("DOMContentLoaded", function () {
+  // 选中文章容器，根据你的主题可能是 .container 或 #wrap-content
+  const article = document.querySelector(".container");
+  if (!article) return;
 
-  const container = document.createElement("div");
-  container.id = "comments-container";
-  postContent.appendChild(container);
+  // 创建评论区
+  const commentDiv = document.createElement("div");
+  commentDiv.id = "comments-section";
+  article.appendChild(commentDiv);
 
-  const storageKey = location.pathname + "-comments";
+  // 创建留言列表
+  const list = document.createElement("div");
+  list.id = "comment-list";
+  commentDiv.appendChild(list);
 
-  container.innerHTML = `
-    <h3>留言板</h3>
-    <form id="comment-form">
-      <input type="text" id="comment-name" placeholder="昵称" required style="width:100%;padding:6px;margin-bottom:6px;">
-      <textarea id="comment-content" placeholder="写下你的留言..." required style="width:100%;padding:6px;margin-bottom:6px;"></textarea>
-      <button type="submit">提交</button>
-    </form>
-    <div id="comment-list"></div>
-  `;
+  // 创建输入框和按钮
+  const input = document.createElement("textarea");
+  input.id = "comment-input";
+  input.placeholder = "写下你的留言...（本地缓存）";
 
-  const form = document.getElementById("comment-form");
-  const list = document.getElementById("comment-list");
+  const btn = document.createElement("button");
+  btn.id = "comment-submit";
+  btn.textContent = "提交";
 
-  const loadComments = () => {
-    const comments = JSON.parse(localStorage.getItem(storageKey) || "[]");
-    list.innerHTML = comments.map(c => `
-      <div class="comment-item">
-        <strong>${c.name}</strong> <span class="comment-time">${c.time}</span>
-        <p>${c.content}</p>
-      </div>
-    `).join("");
-  };
+  commentDiv.appendChild(input);
+  commentDiv.appendChild(btn);
 
-  loadComments();
+  // 加载本地缓存
+  const key = location.pathname + "_comments";
+  let comments = JSON.parse(localStorage.getItem(key) || "[]");
 
-  form.addEventListener("submit", e => {
-    e.preventDefault();
-    const name = document.getElementById("comment-name").value.trim();
-    const content = document.getElementById("comment-content").value.trim();
-    if (!name || !content) return;
-
-    const comments = JSON.parse(localStorage.getItem(storageKey) || "[]");
-    comments.push({
-      name,
-      content,
-      time: new Date().toLocaleString()
+  function renderComments() {
+    list.innerHTML = "";
+    comments.forEach((c, i) => {
+      const div = document.createElement("div");
+      div.className = "comment-item";
+      div.textContent = c;
+      list.appendChild(div);
     });
-    localStorage.setItem(storageKey, JSON.stringify(comments));
+  }
 
-    form.reset();
-    loadComments();
+  renderComments();
+
+  // 提交事件
+  btn.addEventListener("click", function () {
+    const text = input.value.trim();
+    if (!text) return;
+    comments.push(text);
+    localStorage.setItem(key, JSON.stringify(comments));
+    input.value = "";
+    renderComments();
   });
 });
