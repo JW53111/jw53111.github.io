@@ -6,5 +6,7 @@ layout: default
   {{ content }}
 </article>
 
-<!-- 评论区 -->
-{% include comments.html %}
+<!-- 评论区（本地缓存版） -->
+<div id="comments-section"></div>
+<link rel="stylesheet" href="/comments.css">
+<script src="/comments.js" defer></script>
