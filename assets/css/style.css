@@ -7,15 +7,11 @@ html, body, #wrap-content {
   font-family: "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
   background: url("/assets/images/bg.jpg") no-repeat center center fixed;
   background-size: cover;
-  color: #000000; /* 全局字体改黑 */
+  color: #000000;
   line-height: 1.8;
   font-size: 16px;
-  text-rendering: optimizeLegibility;
 }
 
-/* ==========================
-   页面内容容器
-========================== */
 .container {
   max-width: 900px;
   margin: auto;
@@ -25,106 +21,56 @@ html, body, #wrap-content {
   box-shadow: none;
 }
 
-/* ==========================
-   标题美化
-========================== */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Georgia", serif;
   font-weight: bold;
   text-align: center;
   margin: 20px 0;
-  color: #000000; /* 标题改黑 */
-  text-shadow: none; /* 去掉阴影防止影响黑色字体 */
+  color: #000000;
 }
 
-/* ==========================
-   段落优化
-========================== */
 p {
   font-size: 17px;
   line-height: 1.9;
   margin: 15px 0;
-  color: #000000; /* 段落字体改黑 */
-  text-shadow: none; /* 去掉阴影 */
+  color: #000000;
 }
 
-/* ==========================
-   链接样式
-========================== */
 a {
-  color: #1a0dab; /* 标准深蓝色链接 */
+  color: #1a0dab;
   text-decoration: none;
-  transition: 0.3s;
 }
 a:hover {
-  color: #ff6600; /* 悬停颜色 */
+  color: #ff6600;
   text-decoration: underline;
 }
 
-/* ==========================
-   列表样式
-========================== */
 ul, ol {
   margin: 15px 20px;
   padding-left: 20px;
-  color: #000000; /* 列表字体改黑 */
+  color: #000000;
 }
 
-/* ==========================
-   代码块样式
-========================== */
 pre, code {
-  background: rgba(240,240,240,0.9); /* 浅灰背景 */
+  background: rgba(240,240,240,0.9);
   padding: 6px 10px;
   border-radius: 6px;
   font-family: "Fira Code", monospace;
   font-size: 14px;
-  color: #000000; /* 代码字体黑色 */
+  color: #000000;
   overflow-x: auto;
 }
 
-/* ==========================
-   图片自适应
-========================== */
 .markdown-body img {
   max-width: 100%;
   height: auto;
 }
 
-/* ==========================
-   首行缩进
-========================== */
 .markdown-body p {
   text-indent: 2em;
 }
 
-/* ==========================
-   页面高度
-========================== */
 #wrap-content {
   min-height: 100vh;
 }
 
-/* ==========================
-   时间显示样式
-========================== */
-#time-box {
-  color: #000000; /* 时间字体黑色 */
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  margin: 20px auto;
-}
-
-/* ==========================
-   文章页(_posts)样式
-========================== */
-body.post, body.layout-post {
-  background: none; /* 不覆盖全局背景 */
-  color: #000000;   /* 文章字体黑 */
-}
-
-body.post .container, body.layout-post .container {
-  background: none;
-  box-shadow: none;
-}
