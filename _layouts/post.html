@@ -1,30 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: site.html_lang }}">
-  <head>
-    {%- include head.html -%}
-  </head>
-  <body class="post-page">
-    {%- include sidebar.html -%}
+---
+layout: default
+---
 
-    <main id="wrap-content" class="container markdown-body">
-      <article class="post">
-        <header>
-          <h1>{{ page.title }}</h1>
-          {% if page.date %}
-            <p class="post-meta">{{ page.date | date: "%Y-%m-%d %H:%M" }}</p>
-          {% endif %}
-        </header>
-
-        <section class="post-content">
-          {{ content }}
-        </section>
-
-        <footer>
-          {%- include comments.html -%}
-        </footer>
-      </article>
-    </main>
-
-    {%- include footer.html -%}
-  </body>
-</html>
+<div class="post-content">
+  {{ content }}
+</div>
