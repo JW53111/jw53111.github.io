@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const post = document.querySelector(".post");
-  if (!post) return;
-
   const commentDiv = document.getElementById("comments-section");
+  if (!commentDiv) return;
 
   // 标题
   const title = document.createElement("h2");
@@ -14,16 +12,16 @@ document.addEventListener("DOMContentLoaded", function () {
   list.id = "comment-list";
   commentDiv.appendChild(list);
 
-  // 输入昵称
+  // 昵称输入框
   const nicknameInput = document.createElement("input");
   nicknameInput.id = "nickname-input";
   nicknameInput.placeholder = "请输入昵称";
   nicknameInput.value = localStorage.getItem("nickname") || "";
 
-  // 输入内容
+  // 评论输入框
   const input = document.createElement("textarea");
   input.id = "comment-input";
-  input.placeholder = "写下你的留言...（本地保存）";
+  input.placeholder = "写下你的留言...（本地缓存）";
 
   // 提交按钮
   const btn = document.createElement("button");
@@ -46,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       const author = document.createElement("strong");
       author.textContent = c.nickname + ": ";
+
       const text = document.createElement("span");
       text.textContent = c.text;
 
@@ -54,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
       list.appendChild(div);
     });
   }
+
   renderComments();
 
   btn.addEventListener("click", function () {
@@ -70,4 +70,5 @@ document.addEventListener("DOMContentLoaded", function () {
     renderComments();
   });
 });
+
 
