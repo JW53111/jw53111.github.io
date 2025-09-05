@@ -133,4 +133,15 @@ body[data-page-type="post"] .container {
   box-shadow: none !important;
 }
 
+/* 文章页全黑背景 */
+body.post-page {
+  background: #000000 !important;
+  background-image: none !important;
+  color: #ffffff !important;
+}
+
+body.post-page .container {
+  background: none !important;
+  box-shadow: none !important;
+}
 
