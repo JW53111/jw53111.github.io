@@ -123,25 +123,15 @@ pre, code {
 /* ==========================
    文章页面（post）：背景改纯黑
 ========================== */
-body[data-page-type="post"] {
-  background: #000000 !important;
-  background-image: none !important;
-  color: #ffffff !important;
-}
-body[data-page-type="post"] .container {
-  background: none !important;
-  box-shadow: none !important;
-}
-
-/* 文章页全黑背景 */
-body.post-page {
+/* 针对 WuK 主题文章页 class，一般为 body.post 或 body.layout-post */
+body.post, body.layout-post {
   background: #000000 !important;
   background-image: none !important;
   color: #ffffff !important;
 }
 
-body.post-page .container {
+body.post .container,
+body.layout-post .container {
   background: none !important;
   box-shadow: none !important;
 }
-
