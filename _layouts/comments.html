@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ site.jekyll-theme-WuK.default.html_lang | default: 'zh' }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - {{ site.title }}</title>
+
+  <!-- 主题样式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@primer/css@22.0.2/dist/primer.min.css" />
+  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- 高亮样式 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-rouge-css@0.1.0/perldoc.min.css" />
+</head>
+<body>
+
+  <div class="container markdown-body">
+    {{ content }}
+  </div>
+
+  <!-- Utterances 评论脚本 -->
+  <script src="https://utteranc.es/client.js"
+          repo="JW53111/jw53111.github.io"
+          issue-term="url"
+          label="Comment"
+          theme="preferred_color_scheme"
+          lang="en"
+          crossorigin="anonymous"
+          async>
+  </script>
+</body>
+</html>
