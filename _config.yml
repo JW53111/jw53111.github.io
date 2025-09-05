@@ -54,6 +54,15 @@ defaults:
               </div>
           prepend:
             - |
+              <!-- 判断是否文章页面，如果是则加 data-page-type="post" -->
+              <script>
+              document.addEventListener("DOMContentLoaded", function() {
+                if (window.location.pathname.startsWith("/posts/")) {
+                  document.body.setAttribute("data-page-type", "post");
+                }
+              });
+              </script>
+            - |
               <!-- 显示访问者本地时间 -->
               <div id="time-box" style="margin:1em 0; font-weight:bold;">⏰ 加载中...</div>
               <script>
@@ -61,7 +70,8 @@ defaults:
                 const box = document.getElementById("time-box");
                 function updateTime() {
                   const now = new Date();
-                  box.textContent = "⏰ 当前时间：" + now.toLocaleString();
+                  const formatted = now.toLocaleDateString("en-GB") + " " + now.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" });
+                  box.textContent = "⏰ 当前时间：" + formatted;
                 }
                 updateTime();
                 setInterval(updateTime, 1000);
