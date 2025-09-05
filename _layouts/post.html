@@ -2,13 +2,17 @@
 layout: default
 ---
 
-<article class="post">
+<article class="post-article">
   {{ content }}
 </article>
 
-<!-- 独立评论区 -->
-<div id="comments-section"></div>
-
-<!-- 评论样式和脚本 -->
-<link rel="stylesheet" href="/comments.css">
-<script src="/comments.js" defer></script>
+<!-- 评论区 -->
+<div id="comments-section" style="margin-top: 40px;">
+  <script src="https://utteranc.es/client.js"
+          repo="JW53111/jw53111.github.io"
+          issue-term="pathname"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+</div>
