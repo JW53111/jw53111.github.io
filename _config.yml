@@ -1,7 +1,13 @@
+# -------------------------
+# 站点基础信息
+# -------------------------
 title: jw53111 Memory Garden
 description: JW Wang's Personal Blog
 baseurl: ""
 
+# -------------------------
+# 默认配置
+# -------------------------
 defaults:
   - scope:
       path: ""
@@ -54,7 +60,7 @@ defaults:
               </div>
           prepend:
             - |
-              <!-- 判断是否文章页面，如果是则加 data-page-type="post" -->
+              <!-- 判断是否文章页面 -->
               <script>
               document.addEventListener("DOMContentLoaded", function() {
                 if (window.location.pathname.startsWith("/posts/")) {
@@ -123,6 +129,9 @@ defaults:
               <style>pre code.language-mermaid { display:none; }</style>
               <script src="https://cdn.jsdelivr.net/npm/mermaid@11.10.0/dist/mermaid.min.js" async defer onload='for(let x of document.getElementsByClassName("language-mermaid")) if(x.nodeName=="CODE"){let m=document.createElement("div"); m.classList.add("mermaid"); m.textContent=x.textContent; x.parentNode.insertAdjacentElement("beforebegin", m);}'></script>
 
+# -------------------------
+# GitHub Pages 插件
+# -------------------------
 plugins:
   - jekyll-readme-index
   - jekyll-default-layout
@@ -142,6 +151,9 @@ permalink: pretty
 timezone: Asia/Shanghai
 future: true
 
+# -------------------------
+# Markdown 配置
+# -------------------------
 markdown: kramdown
 kramdown:
   input: GFM
@@ -151,6 +163,7 @@ kramdown:
       line_numbers: true
     span:
       disable: false
+
 
 
 # 以下为 githubpage上不可修改的参数，见<https://help.github.com/en/github/working-with-github-pages/about-github-pages-and-jekyll>
