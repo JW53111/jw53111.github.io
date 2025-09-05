@@ -119,3 +119,17 @@ pre, code {
   margin: 20px auto;
   text-align: center;
 }
+
+/* 针对文章页（post）设置背景为黑色 */
+body.layout-post, body.post {
+  background: #000000 !important;  /* 纯黑背景 */
+  background-image: none !important; /* 移除背景图 */
+  color: #ffffff !important; /* 确保文字可读 */
+}
+
+body.layout-post .container, 
+body.post .container {
+  background: none !important; /* 不要遮罩 */
+  box-shadow: none !important;
+}
+
