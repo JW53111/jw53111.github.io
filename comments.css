@@ -2,8 +2,7 @@
   margin-top: 50px;
   padding: 20px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #comments-section h2 {
@@ -53,6 +52,11 @@
   cursor: pointer;
   transition: 0.3s;
 }
+
+#comment-submit:hover {
+  background-color: #e6b800;
+}
+
 
 #comment-submit:hover {
   background-color: #e6b800;
