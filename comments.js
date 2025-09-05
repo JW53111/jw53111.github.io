@@ -1,47 +1,55 @@
-(function() {
-  const postId = window.location.pathname; // 每篇文章唯一标识
-  const commentsKey = 'comments-' + postId;
+// comments.js
+document.addEventListener("DOMContentLoaded", () => {
+  // 自动在文章内容底部插入评论容器
+  const postContent = document.querySelector(".markdown-body, .post-content, .container"); 
+  if (!postContent) return;
 
-  function loadComments() {
-    const comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
-    const listEl = document.getElementById('comments-list');
-    listEl.innerHTML = '';
-    comments.forEach(c => {
-      const div = document.createElement('div');
-      div.className = 'comment';
-      div.innerHTML = `<div class="comment-author">${c.author}</div><div class="comment-text">${c.text}</div>`;
-      listEl.appendChild(div);
-    });
-  }
+  const container = document.createElement("div");
+  container.id = "comments-container";
+  postContent.appendChild(container);
 
-  function addComment(author, text) {
-    const comments = JSON.parse(localStorage.getItem(commentsKey) || '[]');
-    comments.push({ author, text });
-    localStorage.setItem(commentsKey, JSON.stringify(comments));
-    loadComments();
-  }
+  const storageKey = location.pathname + "-comments";
 
-  // 构建评论区 HTML
-  const section = document.getElementById('comments-section');
-  section.innerHTML = `
-    <h3>留言区</h3>
-    <div id="comments-list"></div>
+  container.innerHTML = `
+    <h3>留言板</h3>
     <form id="comment-form">
-      <input type="text" id="comment-author" placeholder="你的名字" required>
-      <textarea id="comment-text" placeholder="你的评论" required></textarea>
+      <input type="text" id="comment-name" placeholder="昵称" required style="width:100%;padding:6px;margin-bottom:6px;">
+      <textarea id="comment-content" placeholder="写下你的留言..." required style="width:100%;padding:6px;margin-bottom:6px;"></textarea>
       <button type="submit">提交</button>
     </form>
+    <div id="comment-list"></div>
   `;
 
-  document.getElementById('comment-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    const author = document.getElementById('comment-author').value.trim();
-    const text = document.getElementById('comment-text').value.trim();
-    if(author && text){
-      addComment(author, text);
-      this.reset();
-    }
-  });
+  const form = document.getElementById("comment-form");
+  const list = document.getElementById("comment-list");
+
+  const loadComments = () => {
+    const comments = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    list.innerHTML = comments.map(c => `
+      <div class="comment-item">
+        <strong>${c.name}</strong> <span class="comment-time">${c.time}</span>
+        <p>${c.content}</p>
+      </div>
+    `).join("");
+  };
 
   loadComments();
-})();
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const name = document.getElementById("comment-name").value.trim();
+    const content = document.getElementById("comment-content").value.trim();
+    if (!name || !content) return;
+
+    const comments = JSON.parse(localStorage.getItem(storageKey) || "[]");
+    comments.push({
+      name,
+      content,
+      time: new Date().toLocaleString()
+    });
+    localStorage.setItem(storageKey, JSON.stringify(comments));
+
+    form.reset();
+    loadComments();
+  });
+});
