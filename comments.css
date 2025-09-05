@@ -1,47 +1,55 @@
 /* 评论区整体 */
 /* comments.css */
+/* 只作用于评论区，不影响整体布局 */
 #comments-section {
   margin-top: 40px;
-  padding: 10px 0;
-  border-top: 1px solid rgba(255,255,255,0.2); /* 顶部分割线 */
-  background: transparent;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  background: transparent; /* 不覆盖主题背景 */
 }
 
+/* 评论列表 */
 #comment-list {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
+/* 单条评论 */
 .comment-item {
-  margin-bottom: 8px;
-  padding: 6px 10px;
+  margin-bottom: 10px;
+  padding: 8px 12px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08); /* 半透明卡片感 */
+  color: inherit; /* 跟随主题文字颜色 */
+  font-size: 0.95em;
 }
 
+/* 输入框 */
 #comment-input {
   width: 100%;
-  min-height: 60px;
-  margin-bottom: 6px;
-  padding: 8px;
+  min-height: 70px;
+  margin-bottom: 8px;
+  padding: 10px;
   border-radius: 6px;
   border: 1px solid rgba(255,255,255,0.3);
   background: rgba(0,0,0,0.5);
-  color: #ffffff;
+  color: inherit;
   resize: vertical;
 }
 
+/* 提交按钮 */
 #comment-submit {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border: none;
   border-radius: 6px;
   background-color: #ffcc00;
   color: #000;
   cursor: pointer;
   transition: 0.3s;
+  font-weight: bold;
 }
 
 #comment-submit:hover {
   background-color: #e6b800;
 }
+
