@@ -1,26 +1,24 @@
 /* 评论区整体 */
+/* comments.css */
 #comments-section {
   margin-top: 40px;
   padding: 10px 0;
-  border-top: 1px solid rgba(255,255,255,0.2);
+  border-top: 1px solid rgba(255,255,255,0.2); /* 顶部分割线 */
   background: transparent;
 }
 
-/* 评论列表 */
 #comment-list {
   margin-bottom: 10px;
 }
 
-/* 每条评论样式 */
 .comment-item {
   margin-bottom: 8px;
   padding: 6px 10px;
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05); /* 超轻透明背景 */
+  background: rgba(255, 255, 255, 0.1); /* 半透明背景 */
   color: #ffffff;
 }
 
-/* 输入框 */
 #comment-input {
   width: 100%;
   min-height: 60px;
@@ -33,7 +31,6 @@
   resize: vertical;
 }
 
-/* 提交按钮 */
 #comment-submit {
   display: inline-block;
   padding: 6px 12px;
