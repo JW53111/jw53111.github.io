@@ -1,5 +1,5 @@
 /* ==========================
-   全局设置
+   全局设置（首页/归档/标签等）
 ========================== */
 html, body, #wrap-content {
   margin: 0;
@@ -20,7 +20,7 @@ html, body, #wrap-content {
   max-width: 900px;
   margin: auto;
   padding: 40px;
-  background: none !important; /* 完全去掉背景遮罩 */
+  background: none !important;
   border-radius: 12px;
   box-shadow: none;
 }
@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   margin: 20px 0;
   color: #ffffff !important;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.7); /* 阴影保证可读性 */
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
 }
 
 /* ==========================
@@ -76,7 +76,7 @@ ul, ol {
    代码块样式
 ========================== */
 pre, code {
-  background: rgba(0,0,0,0.6) !important; /* 轻微半透明背景，保证可读性 */
+  background: rgba(0,0,0,0.6) !important;
   padding: 6px 10px;
   border-radius: 6px;
   font-family: "Fira Code", monospace;
@@ -112,24 +112,25 @@ pre, code {
    时间显示样式
 ========================== */
 #time-box {
-  color: #00ffcc !important;   /* 高亮颜色，和背景有对比 */
+  color: #00ffcc !important;
   font-size: 18px;
   font-weight: bold;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* 阴影保证清晰 */
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
   margin: 20px auto;
   text-align: center;
 }
 
-/* 针对文章页（post）设置背景为黑色 */
-body.layout-post, body.post {
-  background: #000000 !important;  /* 纯黑背景 */
-  background-image: none !important; /* 移除背景图 */
-  color: #ffffff !important; /* 确保文字可读 */
+/* ==========================
+   文章页面（post）：背景改纯黑
+========================== */
+body[data-page-type="post"] {
+  background: #000000 !important;
+  background-image: none !important;
+  color: #ffffff !important;
 }
-
-body.layout-post .container, 
-body.post .container {
-  background: none !important; /* 不要遮罩 */
+body[data-page-type="post"] .container {
+  background: none !important;
   box-shadow: none !important;
 }
+
 
