@@ -1,32 +1,37 @@
-<!DOCTYPE html>
-<html lang="{{ site.jekyll-theme-WuK.default.html_lang | default: 'zh' }}">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} - {{ site.title }}</title>
+---
+layout: default
+---
 
-  <!-- 主题样式 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@primer/css@22.0.2/dist/primer.min.css" />
-  <link rel="stylesheet" href="/assets/css/style.css" />
+<div class="container markdown-body">
+  <h1>{{ page.title }}</h1>
+  <p>欢迎在这里留言~</p>
 
-  <!-- 高亮样式 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pygments-rouge-css@0.1.0/perldoc.min.css" />
-</head>
-<body>
-
-  <div class="container markdown-body">
-    {{ content }}
-  </div>
-
-  <!-- Utterances 评论脚本 -->
+  <!-- Utterances 评论区 -->
+  <div id="utterances_thread"></div>
   <script src="https://utteranc.es/client.js"
-          repo="JW53111/jw53111.github.io"
-          issue-term="url"
-          label="Comment"
-          theme="preferred_color_scheme"
-          lang="en"
-          crossorigin="anonymous"
-          async>
+    repo="JW53111/jw53111.github.io"
+    issue-term="url"
+    label="Comment"
+    theme="preferred_color_scheme"
+    lang="en"
+    crossorigin="anonymous"
+    async>
   </script>
-</body>
-</html>
+</div>
+
+<style>
+  /* 留言区额外样式，不影响文章正文 */
+  #utterances_thread {
+    margin-top: 40px;
+  }
+  .markdown-body h1 {
+    font-size: 2em;
+    margin-bottom: 1em;
+  }
+  .markdown-body p {
+    font-size: 17px;
+    line-height: 1.9;
+    color: #000;
+  }
+</style>
+
