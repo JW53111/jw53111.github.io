@@ -1,241 +1,130 @@
 /* ==========================
-
-   全局设置
-
+   全局设置（首页/归档/标签等）
 ========================== */
-
 html, body, #wrap-content {
-
   margin: 0;
-
   padding: 0;
-
   font-family: "Helvetica Neue", "Segoe UI", Roboto, Arial, sans-serif;
-
-  background: url("/assets/images/bg.jpg") no-repeat center center fixed !important;
-
-  background-size: cover !important;
-
-  color: #ffffff !important;
-
+  background: url("/assets/images/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+  color: #000000; /* 全局字体改黑 */
   line-height: 1.8;
-
   font-size: 16px;
-
   text-rendering: optimizeLegibility;
-
 }
 
-
-
 /* ==========================
-
    页面内容容器
-
 ========================== */
-
 .container {
-
   max-width: 900px;
-
   margin: auto;
-
   padding: 40px;
-
-  background: none !important; /* 完全去掉背景遮罩 */
-
+  background: none;
   border-radius: 12px;
-
   box-shadow: none;
-
 }
 
-
-
 /* ==========================
-
    标题美化
-
 ========================== */
-
 h1, h2, h3, h4, h5, h6 {
-
   font-family: "Georgia", serif;
-
   font-weight: bold;
-
   text-align: center;
-
   margin: 20px 0;
-
-  color: #ffffff !important;
-
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.7); /* 阴影保证可读性 */
-
+  color: #000000; /* 标题改黑 */
+  text-shadow: none; /* 去掉阴影防止影响黑色字体 */
 }
 
-
-
 /* ==========================
-
    段落优化
-
 ========================== */
-
 p {
-
   font-size: 17px;
-
   line-height: 1.9;
-
   margin: 15px 0;
-
-  color: #ffffff !important;
-
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-
+  color: #000000; /* 段落字体改黑 */
+  text-shadow: none; /* 去掉阴影 */
 }
 
-
-
 /* ==========================
-
    链接样式
-
 ========================== */
-
 a {
-
-  color: #ffcc00 !important;
-
+  color: #1a0dab; /* 标准深蓝色链接 */
   text-decoration: none;
-
   transition: 0.3s;
-
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-
 }
-
 a:hover {
-
-  color: #00ffff !important;
-
+  color: #ff6600; /* 悬停颜色 */
   text-decoration: underline;
-
 }
 
-
-
 /* ==========================
-
    列表样式
-
 ========================== */
-
 ul, ol {
-
   margin: 15px 20px;
-
   padding-left: 20px;
-
-  color: #ffffff !important;
-
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-
+  color: #000000; /* 列表字体改黑 */
 }
 
-
-
 /* ==========================
-
    代码块样式
-
 ========================== */
-
 pre, code {
-
-  background: rgba(0,0,0,0.6) !important; /* 轻微半透明背景，保证可读性 */
-
+  background: rgba(240,240,240,0.9); /* 浅灰背景 */
   padding: 6px 10px;
-
   border-radius: 6px;
-
   font-family: "Fira Code", monospace;
-
   font-size: 14px;
-
-  color: #ffcc00 !important;
-
+  color: #000000; /* 代码字体黑色 */
   overflow-x: auto;
-
-  text-shadow: none;
-
 }
 
-
-
 /* ==========================
-
    图片自适应
-
 ========================== */
-
 .markdown-body img {
-
   max-width: 100%;
-
   height: auto;
-
 }
 
-
-
 /* ==========================
-
    首行缩进
-
 ========================== */
-
 .markdown-body p {
-
   text-indent: 2em;
-
 }
 
-
-
 /* ==========================
-
    页面高度
-
 ========================== */
-
 #wrap-content {
-
   min-height: 100vh;
-
 }
 
-
+/* ==========================
+   时间显示样式
+========================== */
+#time-box {
+  color: #000000; /* 时间字体黑色 */
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px auto;
+}
 
 /* ==========================
-
-   时间显示样式
-
+   文章页(_posts)样式
 ========================== */
+body.post, body.layout-post {
+  background: none; /* 不覆盖全局背景 */
+  color: #000000;   /* 文章字体黑 */
+}
 
-#time-box {
-
-  color: #00ffcc !important;   /* 高亮颜色，和背景有对比 */
-
-  font-size: 18px;
-
-  font-weight: bold;
-
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* 阴影保证清晰 */
-
-  margin: 20px auto;
-
-  text-align: center;
-
+body.post .container, body.layout-post .container {
+  background: none;
+  box-shadow: none;
 }
