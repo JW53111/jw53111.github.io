@@ -18,7 +18,7 @@ defaults:
             <div id="utterances_thread"></div>
             <script src="https://utteranc.es/client.js"
               repo="JW53111/jw53111.github.io"
-              issue-term="url"
+              issue-term="pathname"
               label="Comment"
               theme="preferred_color_scheme"
               lang="en"
