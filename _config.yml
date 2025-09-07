@@ -42,7 +42,7 @@ defaults:
               - title: '标签 / Tags'
                 href: /tags/
               - title: '简历 / Resume'
-                href: /resume/
+                href: https://github.com/JW53111/JW-CV/releases/latest
               - title: 'GitHub'
                 href: https://github.com/JW53111
             footer: |
