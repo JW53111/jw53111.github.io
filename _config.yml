@@ -128,6 +128,33 @@ defaults:
             - |
               <style>pre code.language-mermaid { display:none; }</style>
               <script src="https://cdn.jsdelivr.net/npm/mermaid@11.10.0/dist/mermaid.min.js" async defer onload='for(let x of document.getElementsByClassName("language-mermaid")) if(x.nodeName=="CODE"){let m=document.createElement("div"); m.classList.add("mermaid"); m.textContent=x.textContent; x.parentNode.insertAdjacentElement("beforebegin", m);}'></script>
+        smart_include:
+          enable: true
+          key: sakana
+          append: |
+            <link
+              rel="stylesheet"
+              href="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.css"
+            />
+            <script>
+            function initSakanaWidget() {
+              const mizuno = SakanaWidget.getCharacter('takina');
+              mizuno.image = `https://mizuno-ai.wu-kan.cn/pixiv/75805052_p0.webp`;
+              SakanaWidget.registerCharacter('mizuno', mizuno);
+              let sakana = document.createElement("div");
+              sakana.style.bottom = "0";
+              sakana.style.right = "0";
+              sakana.style.zIndex = "1";
+              sakana.style.position = "fixed";
+              document.body.insertAdjacentElement("beforeend", sakana);
+              new SakanaWidget({ character: 'mizuno' }).mount(sakana);
+            }
+            </script>
+            <script
+              async
+              onload="initSakanaWidget();"
+              src="https://cdn.jsdelivr.net/npm/sakana-widget@2.7.1/lib/sakana.min.js"
+            ></script>
 
 # -------------------------
 # GitHub Pages 插件
@@ -163,6 +190,7 @@ kramdown:
       line_numbers: true
     span:
       disable: false
+
 
 
 
