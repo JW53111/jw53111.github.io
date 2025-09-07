@@ -25,5 +25,5 @@ This is my personal website. You can get to know me here and I will share some l
 - [留言 / Comments](/comments/)
 - [归档 / Archive](/archive/)
 - [标签 / Tags](/tags/)
-- [简历 / Resume](/resume/)
+- [简历 / Resume](https://github.com/JW53111/JW-CV/releases/latest)
 - [GitHub](https://github.com/JW53111)
