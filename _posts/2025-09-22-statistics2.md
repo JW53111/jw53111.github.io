@@ -17,7 +17,7 @@ This material will include:
     - Quantify the uncertainty
 
     - Hypothesis Test & Statistical model(linear regression model)
-:::
+
 
 ::: {#3216aa1c .cell .markdown}
 ## Joint, Marginal and conditional Distribution function
