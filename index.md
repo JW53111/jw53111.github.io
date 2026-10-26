@@ -41,29 +41,32 @@ menu: false
         {% assign projects = site.data.projects %}
         {% if projects and projects.size > 0 %}
           {% for project in projects %}
-            {% if project.url %}
-              <a class="project-card" href="{{ project.url }}" target="_blank" rel="noopener noreferrer">
-            {% else %}
-              <article class="project-card">
-            {% endif %}
-                <div>
-                  <div class="project-meta">
-                    <span class="project-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
-                    {% if project.period %}<span>{{ project.period }}</span>{% endif %}
-                  </div>
-                  <h3 class="project-title">{{ project.title }}</h3>
-                  <p class="project-description">{{ project.description }}</p>
+            <article class="project-card">
+              <div>
+                <div class="project-meta">
+                  <span class="project-number">{% if forloop.index < 10 %}0{% endif %}{{ forloop.index }}</span>
+                  {% if project.period %}<span>{{ project.period }}</span>{% endif %}
                 </div>
+                <h3 class="project-title">
+                  {% if project.url %}
+                    <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.title }}</a>
+                  {% else %}
+                    {{ project.title }}
+                  {% endif %}
+                </h3>
+                <p class="project-description">{{ project.description }}</p>
+              </div>
+              <div class="project-actions">
                 {% if project.tags %}
                   <div class="project-tags">
                     {% for tag in project.tags %}<span class="project-tag">{{ tag }}</span>{% endfor %}
                   </div>
                 {% endif %}
-            {% if project.url %}
-              </a>
-            {% else %}
-              </article>
-            {% endif %}
+                {% if project.source %}
+                  <a class="project-source" href="{{ project.source }}" target="_blank" rel="noopener noreferrer">查看源码 ↗</a>
+                {% endif %}
+              </div>
+            </article>
           {% endfor %}
         {% else %}
           <article class="project-card project-empty">
@@ -108,7 +111,7 @@ menu: false
 
     <footer class="home-footer">
       <span>© {{ site.time | date: "%Y" }} Jiawu</span>
-      <span><a href="https://github.com/JW53111">GitHub</a> · <a href="mailto:">联系我</a></span>
+      <span><a href="https://github.com/JW53111">GitHub</a></span>
     </footer>
   </main>
 </div>
