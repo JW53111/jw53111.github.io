@@ -1,0 +1,11 @@
+# 项目会按列表顺序显示在首页。
+# 添加项目时复制下面的结构，并替换示例字段：
+#
+# - title: 项目名称
+#   description: 一两句话介绍项目解决的问题或实现内容。
+#   period: 2026
+#   tags: [Python, 数据分析]
+#   url: https://example.com
+#   source: https://github.com/username/project
+#
+[]
